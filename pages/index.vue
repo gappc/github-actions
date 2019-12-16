@@ -6,7 +6,7 @@
         github-actions
       </h1>
       <h2 class="subtitle">
-        Simple test project to play around with GitHub Actions
+        Simple test project to play around with GitHub Actions!
       </h2>
       <div class="links">
         <a href="https://nuxtjs.org/" target="_blank" class="button--green">
