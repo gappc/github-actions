@@ -27,7 +27,7 @@ jobs:
       env:
         CI: true
     - name: deploy
-    - uses: gappc/rsync-deployments@patch-1
+      uses: gappc/rsync-deployments@patch-1
       with:
         RSYNC_OPTIONS: -avzr --delete --exclude node_modules --exclude '.git*'
         RSYNC_SOURCE: $GITHUB_WORKSPACE/dist/
