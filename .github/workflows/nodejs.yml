@@ -1,9 +1,12 @@
 name: Node CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
-  build:
+  build-and-deploy:
 
     runs-on: ubuntu-latest
 
@@ -23,3 +26,11 @@ jobs:
         npm run build --if-present
       env:
         CI: true
+    - uses: gappc/rsync-deployments@patch-1
+    - name: deploy
+      with:
+        RSYNC_OPTIONS: -avzr --delete --exclude node_modules --exclude '.git*'
+        RSYNC_SOURCE: $GITHUB_WORKSPACE/dist/
+        RSYNC_TARGET: chris@gappc.net:~/test
+      env:
+        DEPLOY_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
